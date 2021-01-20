@@ -10,7 +10,7 @@ class Spectral:
     def cluster(self, x, k, delta=2.):
         def dist(i, j):
             if i == j: return 0.
-            return np.exp(-np.linalg.norm(x[int(i)] - x[int(j)]) ** 2 / 2 * delta)
+            return np.exp(-delta * np.linalg.norm(x[int(i)] - x[int(j)]) ** 2)
 
         n = len(x)
         A = np.fromfunction(np.vectorize(dist), (n, n))
